@@ -159,7 +159,8 @@
 				<li><a href="#login"   data-toggle="modal">Login</a></li>
 			</ul>
 	</div>
-		<div id="login" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width:400px;">
+	
+	<div id="login" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width:400px;">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
 				<h3 id="myModalLabel">Login...</h3>
@@ -178,7 +179,7 @@
 			</div>
 		</div>
 	
-		<div id="signup" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width:700px;">
+	<div id="signup" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width:700px;">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
 					<h3 id="myModalLabel">Sign Up Here...</h3>
@@ -204,86 +205,65 @@
 				</div>
 					</form>
 			</div>
+	
 	<br>
 <div id="container">
-	<div class="nav">
-	
+	<div class="nav">	
 			 <ul>
-				<li><a href="index.php"><i class="icon-home"></i>Home</a></li>
-				<li><a href="product.php"><i class="icon-th-list"></i>Product</a>
-				<li><a href="aboutus.php"><i class="icon-bookmark"></i>About Us</a></li>
+				<li><a href="index.php">   <i class="icon-home"></i>Home</a></li>
+				<li><a href="product.php"> 			 <i class="icon-th-list"></i>Product</a></li>
+				<li><a href="aboutus.php">   <i class="icon-bookmark"></i>About Us</a></li>
 				<li><a href="contactus.php"><i class="icon-inbox"></i>Contact Us</a></li>
 				<li><a href="privacy.php"><i class="icon-info-sign"></i>Privacy Policy</a></li>
 				<li><a href="faqs.php"><i class="icon-question-sign"></i>FAQs</a></li>
 			</ul>
 	</div>
 	
-	<div id="carousel">
-		<div id="myCarousel" class="carousel slide">
-			<div class="carousel-inner">
-				<div class="active item" style="padding:0; border-bottom:0 solid #111;"><img src="img/banner1.jpg" class="carousel"></div>
-				<div class="item" style="padding:0; border-bottom:0 solid #111;"><img src="img/banner2.jpg" class="carousel"></div>
-				<div class="item" style="padding:0; border-bottom:0 solid #111;"><img src="img/banner3.jpg" class="carousel"></div>
-			</div>
-				<a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-				<a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
-		</div>
-	</div>
-	
-
-	<div id="video">
-		<video controls autoplay width="445px" height="300px">
-			<source src="video/commercial.mp4" type="video/mp4">
-		</video>
-	</div>
 
 	
-	<div id="content">
-		<div id="product" style="position:relative; margin-top:30%;">
-			<center><h2><legend>Feature Items</legend></h2></center>
-			<br />
+	
+		<div id="content">
+			<legend><h3>Privacy Policy</h3></legend>
+				<p>The Alphaware Incorporated respect the privacy of the visitors
+					to the alphaware.com website and the local websites connected with it, and take great care to protect your 
+					information.. This privacy policy tells you what information we collect from you, how we may use it and 
+					the steps we take to ensure that it is protected.
+				</p>
+			<hr>
+				<h4>Protection of visitors information</h4>
+					<p>In order to protect the information you provide to us by visiting our website we have implemented various
+						security measures. Your personal information is contained behind secured networks and is only accessible 
+						by a limited number of people, who have special access rights and are required to keep the information 
+						confidential.Please keep in mind though that whenever you give out personal information online there is a 
+						risk that third parties may intercept and use that information. While Alphaware strives to protect its user's 
+						personal information and privacy, we cannot guarantee the security of any information you disclose online 
+						and you do so at your own risk.</p>
+			<hr>
+				<h4>Use of cookies</h4>
+					<p>A cookie is a small string of information that the website that you visit transfers to your computer for 
+						identification purposes. Cookies can be used to follow your activity on the website and that information 
+						helps us to understand your preferences and improve your website experience. Cookies are also used to 
+						remember for instance your user name and password.</p>
+					<p>You can turn off all cookies, in case you prefer not to receive them. You can also have your computer warn
+						you whenever cookies are being used. For both options you have to adjust your browser settings 
+						(like internet explorer). There are also software products available that can manage cookies for you. 
+						Please be aware though that when you have set your computer to reject cookies, it can limit the 
+						functionality of the website you visit and it’s possible then that you do not have access to some of the 
+						features on the website.</p>
+			<hr>
+				<h4>Online policy</h4>
+					<p>The Privacy Policy does not extend to anything that is inherent in the operation of the internet, and 
+						therefore beyond adidas' control, and is not to be applied in any manner contrary to applicable law or 
+						governmental regulation. This online privacy policy only applies to information collected through our 
+						website and not to information collected offline.</p>
 			
-			<?php 
-				
-				$query = mysqli_query($conn, "SELECT *FROM product WHERE category='feature' ORDER BY product_id DESC") or die (mysqli_error());
-				
-					while($fetch = mysqli_fetch_array($query))
-						{
-							
-						$pid = $fetch['product_id'];
-						
-						$query1 = mysqli_query($conn, "SELECT * FROM stock WHERE product_id = '$pid'") or die (mysqli_error());
-						$rows = mysqli_fetch_array($query1);
-						
-						$qty = $rows['qty'];
-						if($qty <= 5){
-						
-						}else{
-							echo "<div class='float'>";
-							echo "<center>";
-							echo "<a href='details.php?id=".$fetch['product_id']."'><img class='img-polaroid' src='photo/".$fetch['product_image']."' height = '300px' width = '300px'></a>";
-							echo " ".$fetch['product_name']."";
-							echo "<br />";
-							echo "P ".$fetch['product_price']."";
-							echo "<br />";
-							echo "<h3 class='text-info' style='position:absolute; margin-top:-90px; text-indent:15px;'> Size: ".$fetch['product_size']."</h3>";
-							echo "</center>";
-							echo "</div>";
-						}
-							
-						}
-			?>
 		</div>
-	
-	
-	
-	</div>
-
 	<br />
 </div>
 	<br />
 	<div id="footer">
 		<div class="foot">
+		
 			<p style="font-size:25px;">Alphaware</p>
 		</div>
 			

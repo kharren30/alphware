@@ -177,6 +177,26 @@
 					</form>
 			</div>
 		</div>
+		
+		<div id="login1" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width:400px;">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+				<h3 id="myModalLabel">Please login before purchasing...</h3>
+			</div>
+				<div class="modal-body">
+					<form method="post">
+					<center>
+						<input type="email" name="email" placeholder="Email" style="width:250px;">
+						<input type="password" name="password" placeholder="Password" style="width:250px;">
+					</center>
+				</div>
+			<div class="modal-footer">
+				<p style="float:left;">No account? <a href="#signup" data-toggle="modal">Sign up here!</a></p>
+				<input class="btn btn-primary" type="submit" name="login" value="Login">
+				<button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Close</button>
+					</form>
+			</div>
+		</div>
 	
 		<div id="signup" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width:700px;">
 				<div class="modal-header">
@@ -190,7 +210,7 @@
 						<input type="text" name="mi" placeholder="Middle Initial" maxlength="1" required>
 						<input type="text" name="lastname" placeholder="Lastname" required>
 						<input type="text" name="address" placeholder="Address" style="width:430px;"required>
-						<input type="text" name="country" placeholder="Province" required>
+						<input type="text" name="country" placeholder="Province" required >
 						<input type="text" name="zipcode" placeholder="ZIP Code" required maxlength="4">
 						<input type="text" name="mobile" placeholder="Mobile Number" maxlength="11">
 						<input type="text" name="telephone" placeholder="Telephone Number" maxlength="8">
@@ -218,34 +238,24 @@
 			</ul>
 	</div>
 	
-	<div id="carousel">
-		<div id="myCarousel" class="carousel slide">
-			<div class="carousel-inner">
-				<div class="active item" style="padding:0; border-bottom:0 solid #111;"><img src="img/banner1.jpg" class="carousel"></div>
-				<div class="item" style="padding:0; border-bottom:0 solid #111;"><img src="img/banner2.jpg" class="carousel"></div>
-				<div class="item" style="padding:0; border-bottom:0 solid #111;"><img src="img/banner3.jpg" class="carousel"></div>
-			</div>
-				<a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-				<a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
-		</div>
+	<div class="nav1">
+		<ul>
+			<li><a href="product.php">Basketball</a></li>
+			<li>|</li>
+			<li><a href="football.php" >Football</a></li>
+			<li>|</li>
+			<li><a href="running.php" class="active" style="color:#111;">Running</a></li>
+		</ul>
 	</div>
-	
-
-	<div id="video">
-		<video controls autoplay width="445px" height="300px">
-			<source src="video/commercial.mp4" type="video/mp4">
-		</video>
-	</div>
-
 	
 	<div id="content">
-		<div id="product" style="position:relative; margin-top:30%;">
-			<center><h2><legend>Feature Items</legend></h2></center>
-			<br />
+		<br />
+		<br />
+		<div id="product">
 			
 			<?php 
 				
-				$query = mysqli_query($conn, "SELECT *FROM product WHERE category='feature' ORDER BY product_id DESC") or die (mysqli_error());
+				$query = mysqli_query($conn, "SELECT *FROM product WHERE category='running' ORDER BY product_id DESC") or die (mysqli_error());
 				
 					while($fetch = mysqli_fetch_array($query))
 						{
@@ -262,7 +272,7 @@
 							echo "<div class='float'>";
 							echo "<center>";
 							echo "<a href='details.php?id=".$fetch['product_id']."'><img class='img-polaroid' src='photo/".$fetch['product_image']."' height = '300px' width = '300px'></a>";
-							echo " ".$fetch['product_name']."";
+							echo "".$fetch['product_name']."";
 							echo "<br />";
 							echo "P ".$fetch['product_price']."";
 							echo "<br />";
@@ -274,16 +284,18 @@
 						}
 			?>
 		</div>
-	
-	
-	
 	</div>
+
+
+
+
 
 	<br />
 </div>
-	<br />
+<br />
 	<div id="footer">
 		<div class="foot">
+			
 			<p style="font-size:25px;">Alphaware</p>
 		</div>
 			
